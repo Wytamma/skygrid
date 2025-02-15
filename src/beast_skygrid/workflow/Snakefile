@@ -23,6 +23,8 @@ rule beast:
         > {output.stdout}
         """
 
+constant_sites = config.get("constant_sites")
+
 rule create_beast_xml:
     input:
         alignment = config["alignment"],
@@ -35,7 +37,7 @@ rule create_beast_xml:
         clock = config.get("clock"),
         chain_length = config.get("chain_length"),
         samples = config.get("samples"),
-        constant_sites = f"--constant-sites {config.get('constant_sites')}" if config.get('constant_sites')  else "",
+        constant_sites = f'--constant-sites "{constant_sites}"' if constant_sites  else "",
     shell:
         """
         python {SCRIPT_DIR}/populate_skygrid_template.py \
