@@ -1,7 +1,7 @@
 # skygrid
 
-[![PyPI - Version](https://img.shields.io/pypi/v/skygrid.svg)](https://pypi.org/project/skygrid)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/skygrid.svg)](https://pypi.org/project/skygrid)
+[![PyPI - Version](https://img.shields.io/pypi/v/beast-skygrid.svg)](https://pypi.org/project/beast-skygrid)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/beast-skygrid.svg)](https://pypi.org/project/beast-skygrid)
 
 -----
 
@@ -13,7 +13,7 @@
 ## Installation
 
 ```console
-pip install skygrid
+pip install beast-skygrid
 ```
 
 ## License
