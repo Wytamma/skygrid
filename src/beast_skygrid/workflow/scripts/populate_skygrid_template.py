@@ -3,7 +3,7 @@ from pathlib import Path
 from typing_extensions import Annotated
 
 from jinja2 import StrictUndefined, Template
-from skygrid.workflow.utils import taxa_from_fasta
+from beast_skygrid.workflow.utils import taxa_from_fasta
 import typer
 
 def populate_template(
@@ -35,18 +35,18 @@ def populate_template(
     trace_log_every = log_every
     trace_log_name = "skygrid.log"
     if trace and output:
-        trace_log_name = f"{output.stem}.log"
+        trace_log_name = output.parent / "skygrid.log"
 
     tree_log_every = log_every
     tree_log_name = "skygrid.trees"
     if trees and output:
-        tree_log_name = f"{output.stem}.trees"
+        tree_log_name = output.parent / "skygrid.trees"
 
 
     # Render the template
     rendered_template = template.render(
         taxa=taxa,
-        clock=clock,
+        clockModel=clock,
         chainLength=chain_length,
         screenLogEvery=log_every,
         traceLogEvery=trace_log_every,

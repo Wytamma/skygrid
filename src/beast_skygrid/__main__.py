@@ -4,6 +4,6 @@
 import sys
 
 if __name__ == "__main__":
-    from skygrid.cli import skygrid
+    from beast_skygrid.cli import skygrid
 
     sys.exit(skygrid())

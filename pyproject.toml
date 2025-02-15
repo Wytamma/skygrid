@@ -34,7 +34,7 @@ Issues = "https://github.com/unknown/skygrid/issues"
 Source = "https://github.com/unknown/skygrid"
 
 [project.scripts]
-skygrid = "skygrid.cli:skygrid"
+skygrid = "beast_skygrid.cli:skygrid"
 
 [tool.hatch.version]
 path = "src/beast_skygrid/__about__.py"
