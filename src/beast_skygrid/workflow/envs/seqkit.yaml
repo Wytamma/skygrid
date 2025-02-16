@@ -2,5 +2,4 @@ channels:
   - bioconda
   - conda-forge
 dependencies:
-  - treetime
-  - iqtree
+  - seqkit

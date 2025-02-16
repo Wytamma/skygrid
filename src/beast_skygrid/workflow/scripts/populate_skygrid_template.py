@@ -34,14 +34,9 @@ def populate_template(
 
     trace_log_every = log_every
     trace_log_name = "skygrid.log"
-    if trace and output:
-        trace_log_name = output.parent / "skygrid.log"
 
     tree_log_every = log_every
     tree_log_name = "skygrid.trees"
-    if trees and output:
-        tree_log_name = output.parent / "skygrid.trees"
-
 
     # Render the template
     rendered_template = template.render(

@@ -30,9 +30,9 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/unknown/skygrid#readme"
-Issues = "https://github.com/unknown/skygrid/issues"
-Source = "https://github.com/unknown/skygrid"
+Documentation = "https://github.com/wytamma/skygrid#readme"
+Issues = "https://github.com/wytamma/skygrid/issues"
+Source = "https://github.com/wytamma/skygrid"
 
 [project.scripts]
 skygrid = "beast_skygrid.cli:skygrid"

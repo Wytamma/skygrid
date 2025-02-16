@@ -1,0 +1,11 @@
+name: ggtree
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base
+  - r-devtools         # Provides devtools::install_github()
+  - bioconductor-treeio
+  - bioconductor-ggtree
+  - r-optparse
+  - r-svglite

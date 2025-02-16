@@ -7,21 +7,28 @@ cli:
   output_dir:
     type: Path
     help: "Path to the output file"
-    default: "./"
-  dimensions:
-    type: int
-    help: "Number of dimensions (change points) in the skygrid model"
-    default: 25
-  cutoff:
-    type: int
-    help: "Cutoff for the skygrid model. Length of the skygrid in years"
-    default: 10
+    default: "./skygrid"
+    short: o
+  constant_sites:
+    type: str
+    help: "Constant sites in format 'A,C,G,T'"
+  discard_outliers:
+    type: bool
+    help: "Use a root-to-tip regression to identify and discard outliers"
+    default: False
   clock:
     help: "Clock model to use in the analysis"
     choices:
       - "strict"
       - "relaxed"
     default: "strict"
+  transition_points_per_year:
+    type: float
+    help: "Number of times to estimate the population size per year"
+    default: 2
+  cutoff:
+    type: int
+    help: "Length of the skygrid in years. If not specified, will be estimated using a root-to-tip regression (recommended)"
   chain_length:
     type: int
     help: "Length of the chain"
@@ -30,9 +37,6 @@ cli:
     type: int
     help: "Number of samples to take from the chain"
     default: 10000
-  constant_sites:
-    type: str
-    help: "Constant sites in format 'As Cs Gs Ts'"
   beast_params:
     type: str
     help: "Parameters to pass to BEAST"
