@@ -14,7 +14,7 @@
 	<taxa id="taxa">
 		{% for taxon in taxa -%}
 		<taxon id="{{ taxon.id }}">
-			<date value="{{ taxon.date }}" direction="forwards" units="years"{% if taxon.uncertainty %} uncertainty="{{ taxon.uncertainty }}"{% endif %}/>
+			<date {% if taxon.uncertainty %}value="{{ taxon.date - (taxon.uncertainty / 2) }}"{% else %}value="{{ taxon.date }}"{% endif %}	direction="forwards" units="years" {% if taxon.uncertainty %} uncertainty="{{ taxon.uncertainty }}"{% endif %}/>
 		</taxon>
 		{% endfor -%}
 	</taxa>
@@ -26,7 +26,7 @@
 		{% for taxon in taxa -%}
 		<sequence>
 			<taxon idref="{{ taxon.id }}"/>
-			{{ taxon.sequence }}
+			{% if sampleFromPrior %}???{% else %}{{ taxon.sequence }}{% endif %}
 		</sequence>
 		{% endfor -%}
 	</alignment>

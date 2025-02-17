@@ -103,6 +103,7 @@ rule create_beast_xml:
         chain_length = config.get("chain_length"),
         samples = config.get("samples"),
         constant_sites = f'--constant-sites "{beast_constant_sites}"' if beast_constant_sites  else "",
+        sample_from_prior = "--sample-from-prior" if config.get("sample_from_prior") else "",
     shell:
         """
         python {SCRIPT_DIR}/populate_skygrid_template.py \
@@ -116,7 +117,8 @@ rule create_beast_xml:
             --relaxed-gamma-scale {params.relaxed_gamma_scale} \
             --chain-length {params.chain_length} \
             --samples {params.samples} \
-            {params.constant_sites}
+            {params.constant_sites} \
+            {params.sample_from_prior}
         """
 
 

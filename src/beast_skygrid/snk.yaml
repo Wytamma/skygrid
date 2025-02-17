@@ -45,6 +45,10 @@ cli:
     type: int
     help: "Number of samples to take from the chain"
     default: 10000
+  sample_from_prior:
+    type: bool
+    help: "Sample from the prior distribution only"
+    default: False
   beast_params:
     type: str
     help: "Parameters to pass to BEAST"

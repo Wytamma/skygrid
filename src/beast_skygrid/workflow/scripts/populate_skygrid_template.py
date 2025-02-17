@@ -22,6 +22,7 @@ def populate_template(
         constant_sites: Annotated[str, typer.Option(help="Constant sites in format 'As Ts Gs Cs'.")] = None,
         trace: Annotated[bool, typer.Option(help="Whether to enable the trace log.")] = True,
         trees: Annotated[bool, typer.Option(help="Whether to enable the trees log.")] = True,
+        sample_from_prior: Annotated[bool, typer.Option(help="Whether to sample from the prior.")] = False,
     ):
     """
     Populates a BEAST template with the given parameters.
@@ -55,6 +56,7 @@ def populate_template(
         dimensions=dimensions,
         cutoff=cutoff,
         constantSites=constant_sites,
+        sampleFromPrior=sample_from_prior,
     )
     if output:
         # Write the rendered template to a file
