@@ -48,6 +48,7 @@ if config.get("constant_sites"):
     beast_constant_sites = " ".join(config.get("constant_sites").split(","))
 
 def get_cutoff():
+    global most_recent_sampling_date
     if config.get("cutoff"):
         return config.get("cutoff")
     with open(rules.treetime.output.dates) as f:
@@ -57,7 +58,9 @@ def get_cutoff():
     if config.get("discard_outliers"):
         taxa = taxa_from_fasta(OUTDIR / "filtered.fasta")
         most_recent_sampling_date = max(taxon.date for taxon in taxa) 
-    estimated_cutoff = most_recent_sampling_date - float(tMCRA)
+        estimated_cutoff = most_recent_sampling_date - float(tMCRA)
+    else:
+        estimated_cutoff = most_recent_sampling_date - float(tMCRA)
     return estimated_cutoff
 
 def get_dimensions():
@@ -79,7 +82,7 @@ rule discard_outliers:
         """
         # extract the first column of the outliers file
         cut -f 1 {input.outliers} > {input.outliers}.tmp
-        echo "Removing $(wc -l {input.outliers}.tmp) outliers from the alignment"
+        echo "Removing outliers from the alignment"
         cat {input.outliers}.tmp
         # remove the outliers from the alignment
         seqkit grep -v -n -f {input.outliers}.tmp {input.alignment} > {output.alignment}

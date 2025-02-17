@@ -63,4 +63,7 @@ rule treetime:
         --sequence-length {params.sequence_length} \
         --coalescent skyline \
         --outdir {params.outdir}
+        
+        # Create outliers.tsv file if it does not exist
+        touch {output.outliers}
         """
