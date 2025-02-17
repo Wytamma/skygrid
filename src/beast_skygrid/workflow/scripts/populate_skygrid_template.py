@@ -45,8 +45,8 @@ def populate_template(
     rendered_template = template.render(
         taxa=taxa,
         clockModel=clock,
-        relaxedClockShape=relaxed_gamma_shape,
-        relaxedClockScale=relaxed_gamma_scale,
+        relaxedGammaShape=relaxed_gamma_shape,
+        relaxedGammaScale=relaxed_gamma_scale,
         chainLength=chain_length,
         screenLogEvery=log_every,
         traceLogEvery=trace_log_every,
