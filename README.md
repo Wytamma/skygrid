@@ -1,6 +1,6 @@
 # Skygrid
 
-[![PyPI - Version](https://img.shields.io/pypi/v/beast-skygrid.svg)](https://pypi.org/project/beast-skygrid)  
+[![PyPI - Version](https://img.shields.io/pypi/v/beast-skygrid.svg)](https://pypi.org/project/beast-skygrid)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/beast-skygrid.svg)](https://pypi.org/project/beast-skygrid)
 
 ![](images/skygrid.png)
