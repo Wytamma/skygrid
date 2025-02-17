@@ -323,7 +323,7 @@
 					<treeModel idref="treeModel"/>
 				</ctmcScalePrior>
 				{% elif clockModel == 'relaxed' %}
-				<gammaPrior shape="1.5" scale="2.88E-5" offset="0.0">
+				<gammaPrior shape="{{ relaxedGammaShape }}" scale="{{ relaxedGammaScale }}" offset="0.0">
 					<parameter idref="ucld.mean"/>
 				</gammaPrior>
 				<exponentialPrior mean="0.3333333333333333" offset="0.0">

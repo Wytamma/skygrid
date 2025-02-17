@@ -98,6 +98,8 @@ rule create_beast_xml:
         dimensions = lambda w: get_dimensions(),
         cutoff = lambda w: get_cutoff(),
         clock = config.get("clock"),
+        relaxed_gamma_shape = config.get("relaxed_gamma_shape"),
+        relaxed_gamma_scale = config.get("relaxed_gamma_scale"),
         chain_length = config.get("chain_length"),
         samples = config.get("samples"),
         constant_sites = f'--constant-sites "{beast_constant_sites}"' if beast_constant_sites  else "",
@@ -110,6 +112,8 @@ rule create_beast_xml:
             --cutoff {params.cutoff} \
             --output {output.beast_XML_file} \
             --clock {params.clock} \
+            --relaxed-gamma-shape {params.relaxed_gamma_shape} \
+            --relaxed-gamma-scale {params.relaxed_gamma_scale} \
             --chain-length {params.chain_length} \
             --samples {params.samples} \
             {params.constant_sites}

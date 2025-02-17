@@ -13,6 +13,8 @@ def populate_template(
         cutoff: Annotated[float, typer.Option(help="Estiamted tMRCA of the tree.")],
         output: Annotated[Path, typer.Option(help="Path to the output Beast XML file.", dir_okay=False, writable=True)] = None,
         clock: Annotated[str, typer.Option(help="Clock model to use in the analysis.")] = "strict",
+        relaxed_gamma_shape: Annotated[float, typer.Option(help="Shape parameter of the gamma distribution for the relaxed clock model.")] = 0.3,
+        relaxed_gamma_scale: Annotated[float, typer.Option(help="Scale parameter of the gamma distribution for the relaxed clock model.")] = 0.001,
         chain_length: Annotated[int, typer.Option(help="Length of the MCMC chain.")] = 100000000,
         samples: Annotated[int, typer.Option(help="Number of samples to draw from the MCMC chain.")] = 10000,
         date_delimiter: Annotated[str, typer.Option(help="Delimiter for the date in the fasta header.")] = "|",
@@ -42,6 +44,8 @@ def populate_template(
     rendered_template = template.render(
         taxa=taxa,
         clockModel=clock,
+        relaxedClockShape=relaxed_gamma_shape,
+        relaxedClockScale=relaxed_gamma_scale,
         chainLength=chain_length,
         screenLogEvery=log_every,
         traceLogEvery=trace_log_every,

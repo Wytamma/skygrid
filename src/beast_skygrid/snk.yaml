@@ -22,6 +22,14 @@ cli:
       - "strict"
       - "relaxed"
     default: "strict"
+  relaxed_gamma_shape:
+    type: float
+    help: "Shape parameter of the gamma distribution for the relaxed clock"
+    default: 0.3
+  relaxed_gamma_scale:
+    type: float
+    help: "Scale parameter of the gamma distribution for the relaxed clock"
+    default: 0.001
   transition_points_per_year:
     type: float
     help: "Number of times to estimate the population size per year"
