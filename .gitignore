@@ -5,3 +5,4 @@ dist
 .snakemake
 tests/data/vre.fasta
 example
+skygrid

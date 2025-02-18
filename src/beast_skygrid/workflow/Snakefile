@@ -37,6 +37,7 @@ rule beast:
         """
         beast \
         {params.beast} \
+        -overwrite \
         -working \
         {input.beast_XML_file} \
         > {log} 2>&1
@@ -107,6 +108,7 @@ rule create_beast_xml:
         samples = config.get("samples"),
         constant_sites = f'--constant-sites "{beast_constant_sites}"' if beast_constant_sites  else "",
         sample_from_prior = "--sample-from-prior" if config.get("sample_from_prior") else "",
+        fixed_clock_rate = f"--fixed-clock-rate {config.get('fixed_clock_rate')}" if config.get("fixed_clock_rate") else "",
     shell:
         """
         python {SCRIPT_DIR}/populate_skygrid_template.py \
@@ -121,7 +123,8 @@ rule create_beast_xml:
             --chain-length {params.chain_length} \
             --samples {params.samples} \
             {params.constant_sites} \
-            {params.sample_from_prior}
+            {params.sample_from_prior} \
+            {params.fixed_clock_rate}
         """
 
 

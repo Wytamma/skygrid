@@ -23,6 +23,7 @@ def populate_template(
         trace: Annotated[bool, typer.Option(help="Whether to enable the trace log.")] = True,
         trees: Annotated[bool, typer.Option(help="Whether to enable the trees log.")] = True,
         sample_from_prior: Annotated[bool, typer.Option(help="Whether to sample from the prior.")] = False,
+        fixed_clock_rate: Annotated[float, typer.Option(help="Fixed clock rate to use in the analysis.")] = None,
     ):
     """
     Populates a BEAST template with the given parameters.
@@ -57,6 +58,7 @@ def populate_template(
         cutoff=cutoff,
         constantSites=constant_sites,
         sampleFromPrior=sample_from_prior,
+        fixedClockRate=fixed_clock_rate,
     )
     if output:
         # Write the rendered template to a file

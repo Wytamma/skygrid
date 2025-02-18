@@ -132,7 +132,7 @@
 	<!-- The strict clock (Uniform rates across branches)                        -->
 	<strictClockBranchRates id="branchRates">
 		<rate>
-			<parameter id="clock.rate" value="1.0" lower="0.0"/>
+			<parameter id="clock.rate"{%if fixedClockRate %} value="{{ fixedClockRate }}"{% else %} value="1.0"{% endif %} lower="0.0" />
 		</rate>
 	</strictClockBranchRates>
 	{% elif clockModel == 'relaxed' %}
@@ -142,7 +142,7 @@
 		<distribution>
 			<logNormalDistributionModel meanInRealSpace="true">
 				<mean>
-					<parameter id="ucld.mean" value="1.0" lower="0.0"/>
+					<parameter id="ucld.mean"{%if fixedClockRate %} value="{{ fixedClockRate }}"{% else %} value="1.0"{% endif %} lower="0.0"/>
 				</mean>
 				<stdev>
 					<parameter id="ucld.stdev" value="0.3333333333333333" lower="0.0"/>
@@ -235,19 +235,22 @@
 		<randomWalkOperator windowSize="0.75" weight="1" boundaryCondition="logit">
 			<parameter idref="pInv"/>
 		</randomWalkOperator>
-		{% if clockModel == 'strict' %}
+		{% if clockModel == 'strict' and not fixedClockRate %}
 		<scaleOperator scaleFactor="0.75" weight="3">
 			<parameter idref="clock.rate"/>
 		</scaleOperator>
 		{% elif clockModel == 'relaxed' %}
+		{% if not fixedClockRate %}
 		<scaleOperator scaleFactor="0.75" weight="3">
 			<parameter idref="ucld.mean"/>
 		</scaleOperator>
+		{% endif %}
 		<scaleOperator scaleFactor="0.75" weight="3">
 			<parameter idref="ucld.stdev"/>
 		</scaleOperator>
 		{% endif %}
 
+		{% if not fixedClockRate %}
 		<upDownOperator scaleFactor="0.75" weight="3">
 			<up>
 				<parameter idref="treeModel.allInternalNodeHeights"/>
@@ -260,6 +263,7 @@
 				{% endif %}
 			</down>
 		</upDownOperator>
+		{% endif %}
 		{% if clockModel == 'relaxed' %}
 		<swapOperator size="1" weight="10" autoOptimize="false">
 			<parameter idref="branchRates.categories"/>
@@ -315,7 +319,7 @@
 				<uniformPrior lower="0.0" upper="1.0">
 					<parameter idref="pInv"/>
 				</uniformPrior>
-				{% if clockModel == 'strict' %}
+				{% if clockModel == 'strict' and not fixedClockRate %}
 				<ctmcScalePrior>
 					<ctmcScale>
 						<parameter idref="clock.rate"/>
@@ -323,9 +327,11 @@
 					<treeModel idref="treeModel"/>
 				</ctmcScalePrior>
 				{% elif clockModel == 'relaxed' %}
+				{% if not fixedClockRate %}
 				<gammaPrior shape="{{ relaxedGammaShape }}" scale="{{ relaxedGammaScale }}" offset="0.0">
 					<parameter idref="ucld.mean"/>
 				</gammaPrior>
+				{% endif %}
 				<exponentialPrior mean="0.3333333333333333" offset="0.0">
 					<parameter idref="ucld.stdev"/>
 				</exponentialPrior>
