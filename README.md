@@ -35,7 +35,15 @@ pip install beast-skygrid
 
 ### 1. Prepare Your Data
 
-Ensure you have a FASTA alignment file. This file is used to extract taxon names and sampling dates for your analysis.
+Ensure you have a FASTA alignment file. This file is used to extract taxon names and sampling dates for your analysis. Sample dates must be in the format `>SampleName|YYYY-MM-DD`. For example:
+
+```fasta
+>Sample1|2020-01-01
+ATG...
+>Sample2|2020-02-01
+ATG...
+...
+```
 
 ### 2. Run the Workflow
 
@@ -105,7 +113,7 @@ The skygrid workflow is divided into several key stages:
 
 ### 1. Taxa Extraction & Date Parsing
 
-The workflow begins by parsing your FASTA alignment to extract taxon information and sampling dates. Dates must be in the format >SampleName|YYYY-MM-DD or . Uncertain dates can be specified as >SampleName|YYYY-MM-DD/uncertainty where uncertainty is a number of years e.g. >SampleName|2020-01-01/1 includes 2020 to 2021.
+The workflow begins by parsing your FASTA alignment to extract taxon information and sampling dates. Dates must be in the format >SampleName|YYYY-MM-DD. Uncertain dates can be specified as >SampleName|YYYY-XX-XX or >SampleName|YYYY-MM-XX e.g. the sampling date for >SampleName|2020-XX-XX will be randomly sampled from the year 2020 (2020-2021).
 
 ### 2. Root-to-Tip Regression & Outlier Detection
 

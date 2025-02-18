@@ -93,17 +93,18 @@ def taxa_from_fasta(fasta_path, date_delimiter="|", date_index=-1):
     for line in fasta_lines:
         if line.startswith(">"):
             header = line[1:].strip()
-            # 1992/1 = 1992 to 1993
-            date_with_uncertainty = header.split(date_delimiter)[date_index]
-            date, *uncertainty = date_with_uncertainty.split("/")
-            if uncertainty:
-                uncertainty = float(uncertainty[0])
-            else:
-                uncertainty = 0.0
+            # 1992-XX-XX
+            date_with_uncertainty = header.split(date_delimiter)[date_index].lower().strip()
+            uncertainty = None
+            if date_with_uncertainty.endswith("-xx-xx"):
+                uncertainty = 1 # 1 year
+            elif date_with_uncertainty.endswith("-xx"):
+                uncertainty = 0.0833 # 1 month
+            date = date_with_uncertainty.replace("xx", "01")
             try:
-                date = float(date)
-            except ValueError:
                 date = date_to_decimal_year(date)
+            except ValueError:
+                raise ValueError(f"Invalid date in header: {header}")
             taxa.append(Taxon(id=header, sequence="", date=float(date), uncertainty=uncertainty))
         else:
             taxa[-1].sequence += line.strip()
