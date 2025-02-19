@@ -28,7 +28,7 @@ rule beast:
         log_file = OUTDIR / "beast" / "skygrid.log",
         trees_file = OUTDIR / "beast" / "skygrid.trees",
     params:
-        beast = config["beast_params"] if config.get("beast_params") else "",
+        beast = config["beast_params"],
     log:
         OUTDIR / "beast" / "skygrid.out",
     conda:
