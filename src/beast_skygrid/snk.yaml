@@ -22,17 +22,17 @@ cli:
       - "strict"
       - "relaxed"
     default: "strict"
-  relaxed_gamma_shape:
+  relaxed_mean_shape:
     type: float
-    help: "Shape parameter of the gamma distribution for the relaxed clock"
+    help: "Shape parameter of the gamma distribution prior on the mean of the uncorrelated relaxed clock"
     default: 0.3
-  relaxed_gamma_scale:
+  relaxed_mean_scale:
     type: float
-    help: "Scale parameter of the gamma distribution for the relaxed clock"
+    help: "Scale parameter of the gamma distribution prior on the mean of the uncorrelated relaxed clock"
     default: 0.001
   fixed_clock_rate:
     type: float
-    help: "Fix the clock rate to this value. If used with relaxed clock, the mean of the gamma distribution will be set to this value"
+    help: "Fix the clock rate to this value. If used with the relaxed clock the mean of the UCLD will be set to this value"
   transition_points_per_year:
     type: float
     help: "Number of times to estimate the population size per year"

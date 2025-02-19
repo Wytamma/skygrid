@@ -89,8 +89,10 @@ A summary of some key options:
     Use a root-to-tip regression to identify and discard outlier sequences.
   - `--clock [strict|relaxed]`  
     Choose the clock model for the analysis (default: `strict`).
-  - `--relaxed-gamma-shape FLOAT` and `--relaxed-gamma-scale FLOAT`  
-    Parameters for the relaxed clock’s gamma distribution (default: shape=0.3, scale=0.001).
+  - `--relaxed-mean-shape FLOAT` and `--relaxed-mean-scale FLOAT`  
+    Parameters for the UCLD relaxed clock’s mean gamma prior (default: shape=0.3, scale=0.001).
+  - `--fixed-clock-rate FLOAT`  
+    Fix the clock rate to this value. If used with the relaxed clock the mean of the UCLD will be set to this value.
   - `--transition-points-per-year FLOAT`  
     Set the number of transition points per year for the skygrid (default: 2).
   - `--cutoff INTEGER`  
