@@ -7,10 +7,11 @@ rule iqtree:
         ENVS_DIR / "rttr.yaml",
     params:
         fconst = f'-fconst {config.get("constant_sites")}' if config.get("constant_sites") else "",
+        iqtree_params = config.get("iqtree_params", ""),
         prefix = OUTDIR / "iqtree" / "iqtree",
     shell:
         """
-        iqtree -redo -s {input.alignment} -m GTR+G -nt AUTO -pre {params.prefix} {params.fconst}
+        iqtree -redo -s {input.alignment} -pre {params.prefix} {params.fconst} {params.iqtree_params}
         """
 
 rule prepare_treetime_metadata:

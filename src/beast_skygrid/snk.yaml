@@ -56,3 +56,7 @@ cli:
     type: str
     help: "Parameters to pass to BEAST"
     default: ""
+  iqtree_params:
+    type: str
+    help: "Parameters to pass to IQ-TREE"
+    default: "-m GTR+G -nt AUTO"
