@@ -3,7 +3,7 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/beast-skygrid.svg)](https://pypi.org/project/beast-skygrid)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/beast-skygrid.svg)](https://pypi.org/project/beast-skygrid)
 
-Skygrid is a Snakemake-based workflow tool designed for performing demographic analyses using BEAST’s skygrid model. It streamlines the entire pipeline—from sequence alignment parsing and outlier detection through BEAST MCMC sampling to post-analysis visualizations—so that you can focus on interpreting your results rather than managing complex workflows.
+Skygrid is a Snakemake-based workflow tool designed for performing demographic analyses using BEAST’s skygrid model. It streamlines the entire pipeline—from alignment parsing and outlier detection through BEAST MCMC sampling to post-analysis visualizations—so that you can focus on interpreting your results rather than managing complex workflows.
 
 ![](images/logo.png)
 
